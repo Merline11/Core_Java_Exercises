@@ -30,7 +30,7 @@ public class ShoppingCart{
      * @throws ItemNotFoundException
      * @throws ItemOutOfStockException
      */
-    boolean addToCart(Item it) throws ItemNotFoundException, ItemOutOfStockException {
+    public boolean addToCart(Item it) throws ItemNotFoundException, ItemOutOfStockException {
 
         if (inventory.validateItem(it)) {
             if(getNumOfItemInStock(it) >= 1) {
@@ -64,7 +64,7 @@ public class ShoppingCart{
      * @throws ItemNotFoundException - if Item given is invalid
      * @throws ItemOutOfStockException - if Requested quantity more than Stock Inventory
      */
-    boolean addToCart(Item it, int quantity) throws  ItemNotFoundException, ItemOutOfStockException {
+    public boolean addToCart(Item it, int quantity) throws  ItemNotFoundException, ItemOutOfStockException {
         if (inventory.validateItem(it)) {
             if(getNumOfItemInStock(it) >= quantity) {
                 logger.info("Item present in Inventory");
@@ -97,7 +97,7 @@ public class ShoppingCart{
      * Calculate the price for Items in Cart
      * @return Total cost
      */
-    Double calculateTotalCost(){
+    public Double calculateTotalCost(){
         Double totalCost=0.0;
         for(Map.Entry<Item, Integer> cartItem: cartItem.entrySet()){
             Item tempItem = cartItem.getKey();
@@ -124,7 +124,7 @@ public class ShoppingCart{
      * Checkout the Cart item and reduce the Item inventory stock
      * @throws ItemNotFoundException - If item not present
      */
-    void checkout() throws ItemNotFoundException {
+    public void checkout() throws ItemNotFoundException {
         for (Map.Entry<Item,Integer> checkoutItem: cartItem.entrySet()) {
             if(inventory.validateItem(checkoutItem.getKey())){
                 inventory.reduceStock(checkoutItem.getKey(), checkoutItem.getValue());
