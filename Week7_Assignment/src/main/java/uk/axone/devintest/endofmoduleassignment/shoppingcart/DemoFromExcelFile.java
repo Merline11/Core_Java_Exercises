@@ -41,7 +41,7 @@ public class DemoFromExcelFile {
         //shoppingCart.addToCart(new Item(1003));
         System.out.println("-------------------------------removeStock-----------------------------------------");
         for(Item item: inventory.stock.keySet()){
-            System.out.println(shoppingCart.removeFromCart(item));
+           // System.out.println(shoppingCart.removeFromCart(item));
             break; // concurrentmodificationexception
         }
 
